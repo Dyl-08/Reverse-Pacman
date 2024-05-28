@@ -165,7 +165,7 @@ function draw() {
 }
 
 function keyPressed() {
-  if(keyCode === 32 & !gameReset) {
+  if(keyCode === 32 || gameReset) {
     gameRunning = true;
     lives = 5;
     initializegame();
@@ -447,13 +447,13 @@ function drawsquares() {
   fill(255, 0, 0);
   noStroke();
 
-  rect(rectX, 430, 15, 15); 
-  rect(370, rect1Y, 15, 15); 
-  rect(rect2X, 200, 15, 15); 
-  rect(250, rect3Y, 15, 15); 
-  rect(120, rect4Y, 20, 18); 
-  rect(rect5X, 480, 15, 15); 
-  rect(120, rect6Y, 15, 15); 
+  rect(rectX, 430, 20, 20); 
+  rect(370, rect1Y, 20, 20); 
+  rect(rect2X, 200, 20, 20); 
+  rect(250, rect3Y, 20, 20); 
+  rect(120, rect4Y, 24, 22); 
+  rect(rect5X, 480, 20, 20); 
+  rect(120, rect6Y, 20, 20); 
 }
 
 function updateRectangleposition() {
@@ -465,16 +465,16 @@ function updateRectangleposition() {
   rect5X += direction5;
   rect6Y += direction6;
 
-  if (rectX >= 435 || rectX <= 405) {
+  if (rectX >= 430 || rectX <= 405) {
     direction *= -1; // Reverse direction
   }
-  if (rect1Y >= 320 || rect1Y <= 285) {
+  if (rect1Y >= 310 || rect1Y <= 285) {
     direction1 *= -1;
   }
-  if (rect2X >= 560 || rect2X <= 530) {
+  if (rect2X >= 556 || rect2X <= 530) {
     direction2 *= -1;
   }
-  if (rect3Y >= 165 || rect3Y <= 125) {
+  if (rect3Y >= 155 || rect3Y <= 125) {
     direction3 *= -1;
   }
   if (rect4Y >= 230 || rect4Y <= 200) {
@@ -483,7 +483,7 @@ function updateRectangleposition() {
   if (rect5X >= 230 || rect5X <= 200) {
     direction5 *= -1;
   }
-  if (rect6Y >= 90 || rect6Y <= 60) {
+  if (rect6Y >= 80 || rect6Y <= 60) {
     direction6 *= -1;
   }
 }
