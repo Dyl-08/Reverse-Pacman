@@ -36,12 +36,14 @@ let imgemoji;
 let imgpointer;
 let imgfinishline;
 let winningimage;
+
 let showImage = true;
 let showImage1 = true;
 let block = false;
 let bounceOffset = 480;
 let bounceSpeed = 0.25;
 
+let s;
 let lives = 5;
 
 let lines = [
@@ -125,6 +127,7 @@ function draw() {
       image(imgspacebar, 58, 50, 500, 100);
       image(imgpointer, 180, 400, 250, 250);
     }
+
     
   } else {
     background(32);
@@ -141,9 +144,11 @@ function draw() {
   
   fill(255);
   textSize(17);
-  if (lives > 0) {
+
+  if (lives > 0 && gameRunning) {
     text("Lives: " + lives, 10, 25);
-  } else {
+    text("Press 1 (easy), 2 (medium), and 3 (hard) to change difficulty", 140, 25);
+  } else if (gameRunning) {
     text("Game Over - Press spacebar to play again", 10, 30);
     gameRunning = false;
     gameReset = true;
@@ -161,6 +166,18 @@ function draw() {
   if (lives <= 0 && gameReset) {
     resetgame();
     gameReset = false;
+  }
+
+  if (keyCode === 49) {
+    s = 15;
+  }
+
+  if (keyCode === 50) {
+    s = 19;
+  }
+
+  if (keyCode === 51) {
+    s = 22;
   }
 }
 
@@ -447,13 +464,13 @@ function drawsquares() {
   fill(255, 0, 0);
   noStroke();
 
-  rect(rectX, 430, 20, 20); 
-  rect(370, rect1Y, 20, 20); 
-  rect(rect2X, 200, 20, 20); 
-  rect(250, rect3Y, 20, 20); 
-  rect(120, rect4Y, 24, 22); 
-  rect(rect5X, 480, 20, 20); 
-  rect(120, rect6Y, 20, 20); 
+  rect(rectX, 430, s, s); 
+  rect(370, rect1Y, s, s); 
+  rect(rect2X, 200, s, s); 
+  rect(250, rect3Y, s, s); 
+  rect(120, rect4Y, s + 3, s + 3); 
+  rect(rect5X, 480, s, 20); 
+  rect(120, rect6Y, s, s); 
 }
 
 function updateRectangleposition() {
